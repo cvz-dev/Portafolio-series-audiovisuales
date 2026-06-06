@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:api.anthropic.com)",
+      "Bash(cp \"/home/cvz/.claude/projects/-home-cvz-cvz-dev-sistemas-series/b7f8a296-af16-4484-99c2-1967fd6e4b24/tool-results/webfetch-1780635112135-vn180k.bin\" /tmp/design.gz)",
+      "Bash(gunzip -f /tmp/design.gz)",
+      "Read(//tmp/**)",
+      "Bash(tar -tf /tmp/design)",
+      "Bash(tar -xf /tmp/design -C /tmp/)",
+      "Bash(cp /tmp/portafolio-series/project/styles.css /home/cvz/cvz_dev/sistemas/series/styles.css)",
+      "Bash(cp /tmp/portafolio-series/project/data.jsx /home/cvz/cvz_dev/sistemas/series/data.jsx)",
+      "Bash(cp /tmp/portafolio-series/project/components.jsx /home/cvz/cvz_dev/sistemas/series/components.jsx)",
+      "Bash(cp /tmp/portafolio-series/project/detail.jsx /home/cvz/cvz_dev/sistemas/series/detail.jsx)",
+      "Bash(cp /tmp/portafolio-series/project/app.jsx /home/cvz/cvz_dev/sistemas/series/app.jsx)",
+      "WebSearch"
+    ]
+  }
+}
