@@ -37,7 +37,7 @@ window.EVIDENCIAS = [
   },
   {
     id: "e03", ch: "03", title: "All Her Fault",
-    hue: 285, cover: "images/allHerFault.png", backdrop: "images/allHerFault-backdrop.png", backdropSize: "80%", era: 2025, actividad: "a1", year: "2025",
+    hue: 285, cover: "images/allHerFault.png", backdrop: "images/allHerFault-backdrop.png", backdropSize: "95%", era: 2025, actividad: "a1", year: "2025",
     tags: ["Thriller doméstico", "Miniserie", "Prime Video"],
     tagline: "Un thriller psicológico que expone la vulnerabilidad en la era contemporánea.",
     syn: "Miniserie de suspense basada en la novela de Andrea Mara que narra la angustiante búsqueda de Marissa Irvine tras descubrir que su hijo ha desaparecido después de dejarlo en su primer día de clases. A medida que la investigación avanza, los secretos y mentiras que rodean a la familia comienzan a salir a la luz.",

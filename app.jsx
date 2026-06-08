@@ -119,7 +119,7 @@ function App() {
 
   const ALL = window.EVIDENCIAS.map(ev => ({ ...ev, progress: progMap[ev.id] ?? ev.progress ?? 0 }));
 
-  const openDetail = useCallback((ev) => { setDetail(ev); window.scrollTo({ top: 0 }); }, []);
+  const openDetail = useCallback((ev) => { setDetail(ev); }, []);
   const openRead = useCallback((ev) => { setReading(ev); setDetail(null); }, []);
 
   const featured = ALL.find((e) => e.featured) || ALL[0];
