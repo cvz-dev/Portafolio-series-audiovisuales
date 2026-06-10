@@ -1,21 +1,26 @@
 /* ===== App principal — EPISODIA ===== */
 
 function Nav({ tab, setTab, query, setQuery, listCount }) {
+  const [menuOpen, setMenuOpen] = useState(false);
   const tabs = [
     { id: "inicio", label: "Inicio" },
     { id: "actividades", label: "Actividades" },
     { id: "linea", label: "Orden Cronológico" },
     { id: "lista", label: `Mi lista${listCount ? ` (${listCount})` : ""}` },
   ];
+  const pick = (id) => { setTab(id); setMenuOpen(false); };
   return (
     <nav className="nav">
-      <div className="brand" onClick={() => setTab("inicio")}>
+      <button className="nav-burger" onClick={() => setMenuOpen((v) => !v)} aria-label="Menú" aria-expanded={menuOpen}>
+        {menuOpen ? <Icon.close /> : <Icon.menu />}
+      </button>
+      <div className="brand" onClick={() => pick("inicio")}>
         <span className="brand-mark">EPISOD<b>IA</b></span>
         <span className="brand-plus">+</span>
       </div>
       <div className="nav-links">
         {tabs.map((t) => (
-          <button key={t.id} className={"nav-link" + (tab === t.id ? " active" : "")} onClick={() => setTab(t.id)}>{t.label}</button>
+          <button key={t.id} className={"nav-link" + (tab === t.id ? " active" : "")} onClick={() => pick(t.id)}>{t.label}</button>
         ))}
       </div>
       <div className="nav-right">
@@ -25,6 +30,13 @@ function Nav({ tab, setTab, query, setQuery, listCount }) {
         </div>
         <div className="avatar" title="Sebastian Rodríguez Arellano">SR</div>
       </div>
+      {menuOpen && (
+        <div className="nav-drawer">
+          {tabs.map((t) => (
+            <button key={t.id} className={"nav-drawer-link" + (tab === t.id ? " active" : "")} onClick={() => pick(t.id)}>{t.label}</button>
+          ))}
+        </div>
+      )}
     </nav>
   );
 }
@@ -66,7 +78,6 @@ function ActividadPanel({ act, series, onOpen }) {
           <span className="act-count mono">{String(series.length).padStart(2, "0")} SERIES</span>
         </div>
         <h2 className="act-title">{act.title}</h2>
-        <p className="act-objetivo">{act.objetivo}</p>
         <p className="act-desc">{act.desc}</p>
       </div>
       <div className="act-series">
