@@ -1,7 +1,8 @@
 /* ===== App principal — EPISODIA ===== */
 
-function Nav({ tab, setTab, query, setQuery, listCount }) {
+function Nav({ tab, setTab, query, setQuery, listCount, profile, onProfile }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const initial = profile.trim() ? profile.trim()[0].toUpperCase() : null;
   const tabs = [
     { id: "inicio", label: "Inicio" },
     { id: "actividades", label: "Actividades" },
@@ -16,7 +17,7 @@ function Nav({ tab, setTab, query, setQuery, listCount }) {
       </button>
       <div className="brand" onClick={() => pick("inicio")}>
         <span className="brand-mark">EPISOD<b>IA</b></span>
-        <span className="brand-plus">+</span>
+        <span className="brand-plus"><Icon.plus width="13" height="13" /></span>
       </div>
       <div className="nav-links">
         {tabs.map((t) => (
@@ -28,7 +29,9 @@ function Nav({ tab, setTab, query, setQuery, listCount }) {
           <Icon.search />
           <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Buscar título…" />
         </div>
-        <div className="avatar" title="Sebastian Rodríguez Arellano">SR</div>
+        <button className={"avatar" + (initial ? "" : " avatar-empty")} title={profile.trim() ? `Perfil: ${profile}` : "Crear perfil"} onClick={onProfile}>
+          {initial || <Icon.user />}
+        </button>
       </div>
       {menuOpen && (
         <div className="nav-drawer">
@@ -53,7 +56,6 @@ function Hero({ ev, onRead, onOpen }) {
           <span className="pill mono">CH {ev.ch}</span>
           <span>{window.actLabel(ev)}</span>
         </div>
-        <p className="syn">{ev.tagline} {ev.syn}</p>
         <div className="hero-actions">
           <button className="btn btn-primary" onClick={() => onRead(ev)}><Icon.play /> Leer evidencia</button>
           <button className="btn btn-ghost" onClick={() => onOpen(ev)}><Icon.info /> Más información</button>
@@ -109,6 +111,35 @@ function Footer() {
   );
 }
 
+/* Modal de perfil: editar nombre (la foto es la inicial) */
+function ProfileModal({ open, name, onSave, onClose }) {
+  const [value, setValue] = useState(name);
+  useEffect(() => { if (open) setValue(name); }, [open, name]);
+  if (!open) return null;
+  const initial = value.trim() ? value.trim()[0].toUpperCase() : null;
+  const save = () => { const v = value.trim(); if (v) { onSave(v); onClose(); } };
+  return (
+    <div className="overlay" onClick={onClose}>
+      <div className="profile-card" onClick={(e) => e.stopPropagation()}>
+        <button className="sheet-close" onClick={onClose} aria-label="Cerrar"><Icon.close /></button>
+        <h2 className="profile-title">Tu perfil</h2>
+        <div className={"profile-avatar-lg" + (initial ? "" : " profile-avatar-empty")}>{initial || <Icon.user width="40" height="40" />}</div>
+        <label className="profile-label" htmlFor="profile-name">Nombre del perfil</label>
+        <input
+          id="profile-name" className="profile-input" value={value} autoFocus maxLength={24}
+          placeholder="Escribe tu nombre"
+          onChange={(e) => setValue(e.target.value)}
+          onKeyDown={(e) => { if (e.key === "Enter") save(); }}
+        />
+        <div className="profile-actions">
+          <button className="btn btn-ghost" onClick={onClose}>Cancelar</button>
+          <button className="btn btn-primary" onClick={save} disabled={!value.trim()}>Guardar</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function App() {
   const ACTS = window.ACTIVIDADES;
   const [tab, setTab] = useState("inicio");
@@ -121,9 +152,17 @@ function App() {
   const [progMap, setProgMap] = useState(() => {
     try { return JSON.parse(localStorage.getItem("episodia-progress") || "{}"); } catch { return {}; }
   });
+  const [profile, setProfile] = useState(() => {
+    try {
+      const v = localStorage.getItem("episodia-profile") || "";
+      return v === "Invitado" ? "" : v;
+    } catch { return ""; }
+  });
+  const [profileOpen, setProfileOpen] = useState(false);
 
   useEffect(() => { localStorage.setItem("episodia-list", JSON.stringify(list)); }, [list]);
   useEffect(() => { localStorage.setItem("episodia-progress", JSON.stringify(progMap)); }, [progMap]);
+  useEffect(() => { localStorage.setItem("episodia-profile", profile); }, [profile]);
 
   const toggleList = (id) => setList((l) => l.includes(id) ? l.filter((x) => x !== id) : [...l, id]);
   const saveProgress = useCallback((id, val) => setProgMap(p => ({ ...p, [id]: val })), []);
@@ -143,10 +182,10 @@ function App() {
   const q = query.trim().toLowerCase();
   const results = q
     ? ALL.filter((e) =>
-        (e.title + e.syn + e.tagline + window.actLabel(e) + e.tags.join(" ")).toLowerCase().includes(q))
+        (e.title + " " + e.tags.join(" ")).toLowerCase().includes(q))
     : null;
 
-  const lock = detail || reading;
+  const lock = detail || reading || profileOpen;
   useEffect(() => {
     document.body.style.overflow = lock ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -164,7 +203,7 @@ function App() {
             {items.map((ev) => <Card key={ev.id} ev={ev} onOpen={openDetail} showProgress={tab === "lista"} />)}
           </div>
         ) : (
-          <div className="grid-empty">// SIN SEÑAL — no hay títulos en esta sección</div>
+          <div className="grid-empty">No hay títulos en guardados en la lista</div>
         )}
       </div>
     </div>
@@ -172,7 +211,7 @@ function App() {
 
   return (
     <div className="app">
-      <Nav tab={tab} setTab={(t) => { setTab(t); setQuery(""); window.scrollTo({ top: 0 }); }} query={query} setQuery={setQuery} listCount={list.length} />
+      <Nav tab={tab} setTab={(t) => { setTab(t); setQuery(""); window.scrollTo({ top: 0 }); }} query={query} setQuery={setQuery} listCount={list.length} profile={profile} onProfile={() => setProfileOpen(true)} />
 
       {results ? (
         <Grid items={results} title={`Resultados para “${query}”`} sub={`${results.length} título(s) en el catálogo`} />
@@ -210,6 +249,7 @@ function App() {
         inList={detail && list.includes(detail.id)} toggleList={toggleList}
       />
       <Reader ev={reading} onClose={() => setReading(null)} onProgress={saveProgress} />
+      <ProfileModal open={profileOpen} name={profile} onSave={setProfile} onClose={() => setProfileOpen(false)} />
     </div>
   );
 }
