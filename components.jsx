@@ -69,7 +69,7 @@ function Rail({ title, items, onOpen, showProgress }) {
     <section className="section">
       <div className="rail-head">
         <h2>{title}</h2>
-        <span className="count mono">{String(items.length).padStart(2, "0")} TÍTULOS</span>
+        <span className="count mono">{String(items.length).padStart(2, "0")} {items.length === 1 ? "TÍTULO" : "TÍTULOS"}</span>
         <div className="chrev">
           <button className="chev" onClick={() => scroll(-1)} aria-label="Anterior"><Icon.chevL /></button>
           <button className="chev" onClick={() => scroll(1)} aria-label="Siguiente"><Icon.chevR /></button>

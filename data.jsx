@@ -23,6 +23,11 @@ window.ACTIVIDADES = [
     id: "a4", num: "4", title: "Familia",
     desc: "Análisis de las series de:\nMalcom, (T2E20) Boliche.\nArrested develpment (T1E10) Pier Pressure.\nBluey (8T2-E9) Hora de dormir.\nMarried with children (T1 E1).",
     hue: 35
+  },
+  {
+    id: "a5", num: "5", title: "Ted Lasso: Rainbow",
+    desc: "• ¿Por qué \"Rainbow\" puede considerarse un episodio clave para entender el corazón temático de Ted Lasso?\n• ¿De qué manera el episodio construye el tono de la serie a partir de la mezcla entre comedia, emoción y crecimiento personal?\n• ¿Qué avances importantes presenta \"Rainbow\" en los arcos de personajes principales y cómo contribuyen al desarrollo de la serie en su conjunto?\n• ¿Cómo demuestra este episodio que una serie coral puede desarrollar historias individuales y, al mismo tiempo, fortalecer la narrativa colectiva?\n• ¿Qué representa el regreso de Roy Kent al AFC Richmond dentro de la lógica del grupo?\n• ¿Qué nos dice \"Rainbow\" sobre la importancia de encontrar un lugar dentro de una comunidad?",
+    hue: 45
   }
 ];
 
@@ -33,7 +38,8 @@ window.EVIDENCIAS = [
     tags: ["Drama", "NBC", "Warner Bros. TV"],
     tagline: "El ala oeste como escenario del poder y la narrativa serial de autor.",
     syn: "The West Wing (El ala oeste de la Casa Blanca) es un aclamado drama político que narra el día a día de la administración del presidente ficticio de EE. UU., el demócrata Josiah 'Jed' Bartlet.",
-    progress: 0, featured: false
+    ficha: { pais: "Estados Unidos", creador: "Aaron Sorkin", temporadas: 7, epsPorTemporada: "22 episodios", duracion: "~44 min", plataforma: "NBC · Max" },
+    slug: "theWestWing", progress: 0, featured: false
   },
   {
     id: "e02", ch: "02", title: "House of Cards",
@@ -41,7 +47,8 @@ window.EVIDENCIAS = [
     tags: ["Drama", "Suspenso", "Netflix"],
     tagline: "La primera apuesta de Netflix que cambió las reglas del juego.",
     syn: "Traicionado por la Casa Blanca, Frank Underwood inicia una fiera lucha por el poder. Sus armas: chantaje y secucción",
-    progress: 0, featured: false
+    ficha: { pais: "Estados Unidos", creador: "Beau Willimon", temporadas: 6, epsPorTemporada: "13 eps (T1–T5), 8 eps (T6)", duracion: "~47–60 min", plataforma: "Netflix" },
+    slug: "houseOfCards", progress: 0, featured: false
   },
   {
     id: "e03", ch: "03", title: "All Her Fault",
@@ -49,7 +56,8 @@ window.EVIDENCIAS = [
     tags: ["Drama", "Suspenso", "Prime Video"],
     tagline: "Un thriller psicológico que expone la vulnerabilidad en la era contemporánea.",
     syn: "Marissa y Peter Irvine entran en una pesadilla cuando su pequeño hijo es secuestrado.",
-    progress: 0, featured: false
+    ficha: { pais: "Irlanda", creador: "Adaptación de la novela de Andrea Mara", temporadas: 1, epsPorTemporada: "6 episodios", duracion: "~45 min", plataforma: "Prime Video" },
+    slug: "allHerFault", progress: 0, featured: false
   },
   {
     id: "e04", ch: "04", title: "The Newsroom",
@@ -57,7 +65,8 @@ window.EVIDENCIAS = [
     tags: ["Drama", "HBO Max"],
     tagline: "La sala de redacción como arena del ideal democrático.",
     syn: "Sigue la actualidad de un canal de noticias, centrándose en el presentador Will McAvoy y su nueva forma de hacer periodismo televisivo.",
-    progress: 0, featured: false
+    ficha: { pais: "Estados Unidos", creador: "Aaron Sorkin", temporadas: 3, epsPorTemporada: "T1: 10 eps, T2: 9 eps, T3: 6 eps", duracion: "~58 min", plataforma: "HBO · Max" },
+    slug: "theNewsroom", progress: 0, featured: false
   },
   {
     id: "e05", ch: "05", title: "Dark",
@@ -65,7 +74,8 @@ window.EVIDENCIAS = [
     tags: ["Drama", "Ciencia ficción", "Familia", "Netflix",],
     tagline: "La primera serie alemana de Netflix que redefinió el thriller de ciencia ficción europeo.",
     syn: "Ambientada en la Alemania contemporánea, la serie gira alrededor de la desaparición de dos niños en Widen. El pueblo se vuelca en buscarles hasta que la situación cada vez se convierte más en una experiencia sobrenatural. Parece ser que todo se relaciona con los inexplicables sucesos que ocurrieron en 1986. Toda esta misteriosa desaparición, además, sacará a la luz el pasado y los secretos de cuatro familias que descubren que están conectadas.",
-    progress: 0, featured: true
+    ficha: { pais: "Alemania", creador: "Baran bo Odar · Jantje Friese", temporadas: 3, epsPorTemporada: "10 episodios", duracion: "~45–60 min", plataforma: "Netflix" },
+    slug: "dark", progress: 0, featured: true
   },
   {
     id: "e06", ch: "06", title: "Friends",
@@ -73,7 +83,8 @@ window.EVIDENCIAS = [
     tags: ["Comedia", "Romance", "Amigos", "HBO Max"],
     tagline: "El modelo canónico de la comedia de situación en televisión de red.",
     syn: "La exitosa comedia 'Friends' sigue la vida de un grupo de amigos que, explorando sus relaciones y aventuras cómicas, navegan por la vida adulta.",
-    progress: 0, featured: false
+    ficha: { pais: "Estados Unidos", creador: "David Crane · Marta Kauffman", temporadas: 10, epsPorTemporada: "~24 episodios", duracion: "~22 min", plataforma: "NBC · Max" },
+    slug: "friends", progress: 0, featured: false
   },
   {
     id: "e07", ch: "07", title: "Modern Family",
@@ -81,7 +92,8 @@ window.EVIDENCIAS = [
     tags: ["Comedia", "Drama", "Familia", "Disney Plus"],
     tagline: "La evolución del sitcom clásico hacia el falso documental.",
     syn: "Modern Family muestra a tres familias a través de la lente estilo documental",
-    progress: 0, featured: false
+    ficha: { pais: "Estados Unidos", creador: "Christopher Lloyd · Steven Levitan", temporadas: 11, epsPorTemporada: "~24 episodios", duracion: "~22 min", plataforma: "ABC · Disney+" },
+    slug: "modernFamily", progress: 0, featured: false
   },
   {
     id: "e08", ch: "08", title: "This Is Us",
@@ -89,7 +101,8 @@ window.EVIDENCIAS = [
     tags: ["Drama", "Comedia", "Familia", "Disney Plus"],
     tagline: "Una crónica emocional de la familia americana contada a través del tiempo.",
     syn: "Una comedia dramática con un grupo de personajes únicos nacidos todos el mismo día",
-    progress: 0, featured: false
+    ficha: { pais: "Estados Unidos", creador: "Dan Fogelman", temporadas: 6, epsPorTemporada: "~18 episodios", duracion: "~42 min", plataforma: "NBC · Disney+" },
+    slug: "thisIsUs", progress: 0, featured: false
   },
   {
     id: "e09", ch: "09", title: "Malcolm in the Middle",
@@ -97,7 +110,8 @@ window.EVIDENCIAS = [
     tags: ["Comedia", "Drama", "Familia", "Fox", "Disney plus"],
     tagline: "El sitcom sin risas enlatadas que rompió las reglas de la comedia familiar.",
     syn: "Un niño genio que se enfrenta a sus otros dos hermanos y a sus padres excéntricos en la vida familiar cotidiana.",
-    progress: 0, featured: false
+    ficha: { pais: "Estados Unidos", creador: "Linwood Boomer", temporadas: 7, epsPorTemporada: "~22 episodios", duracion: "~22 min", plataforma: "Fox · Disney+" },
+    slug: "malcolmInTheMiddle", progress: 0, featured: false
   },
   {
     id: "e10", ch: "10", title: "Bluey",
@@ -105,7 +119,8 @@ window.EVIDENCIAS = [
     tags: ["Animación", "Familia", "Disney Plus"],
     tagline: "La serie animada australiana que redefinió el entretenimiento familiar global.",
     syn: "Bluey es una perrita de seis años que llena de aventuras la vida familiar",
-    progress: 0, featured: false
+    ficha: { pais: "Australia", creador: "Joe Brumm", temporadas: 3, epsPorTemporada: "~52 episodios", duracion: "~7 min", plataforma: "ABC Kids · Disney+" },
+    slug: "bluey", progress: 0, featured: false
   },
   {
     id: "e11", ch: "11", title: "Arrested Development",
@@ -113,7 +128,8 @@ window.EVIDENCIAS = [
     tags: ["Comedia", "Familia", "Fox", "Netflix"],
     tagline: "La comedia de culto que llevó el humor absurdo y autorreferencial a otro nivel.",
     syn: "A Michael Bluth le tocó tomar las riendas del negocio familiar después de que su padre fue encarcelado, pero el resto de su disfuncional familia hacen que el trabajo sea insoportable.",
-    progress: 0, featured: false
+    ficha: { pais: "Estados Unidos", creador: "Mitchell Hurwitz", temporadas: 5, epsPorTemporada: "T1: 22 eps, T2: 18 eps, T3: 13 eps, T4–T5: ~15 eps", duracion: "~22 min", plataforma: "Fox (T1–T3) · Netflix (T4–T5)" },
+    slug: "arrestedDevelopment", progress: 0, featured: false
   },
   {
     id: "e12", ch: "12", title: "Married with Children",
@@ -121,7 +137,17 @@ window.EVIDENCIAS = [
     tags: ["Comedia", "Familia", "Fox", "HBO Max"],
     tagline: "La sitcom que desafió la televisión familiar con humor irreverente y clase trabajadora.",
     syn: "Tras 16 años de casados, Peggy y Al Bundy saben que el secreto de un matrimonio feliz es la igualdad, es decir, ¡todos sufren por igual!.",
-    progress: 0, featured: false
+    ficha: { pais: "Estados Unidos", creador: "Ron Leavitt · Michael G. Moye", temporadas: 11, epsPorTemporada: "~25 episodios", duracion: "~22 min", plataforma: "Fox · Max" },
+    slug: "marriedWithChildren", progress: 0, featured: false
+  },
+  {
+    id: "e13", ch: "13", title: "Ted Lasso",
+    hue: 45, cover: "images/tedLasso.jpg", coverPosition: "center top", backdrop: "images/tedLasso-backdrop.jpg", backdropPosition: "center 30%", era: 2020, actividad: "a5", year: "2020–2023",
+    tags: ["Comedia", "Drama", "Deportes", "Apple TV+"],
+    tagline: "El entrenador americano que convirtió al fútbol en una metáfora de la amabilidad radical.",
+    syn: "Ted Lasso es un entrenador de fútbol americano contratado, contra toda lógica, para dirigir el AFC Richmond, un club inglés en crisis. Sin experiencia ni credenciales en el fútbol europeo, su mayor arma es la empatía.",
+    ficha: { pais: "EE. UU. / Reino Unido", creador: "Jason Sudeikis · Bill Lawrence · Brendan Hunt · Joe Kelly", temporadas: 3, epsPorTemporada: "T1: 6 eps, T2–T3: 12 eps", duracion: "~29–45 min", plataforma: "Apple TV+" },
+    slug: "tedLasso", progress: 0, featured: false
   }
 ];
 

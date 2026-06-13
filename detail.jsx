@@ -36,6 +36,26 @@ function DetailSheet({ ev, all, onClose, onRead, onOpen, inList, toggleList }) {
           <div className="sheet-tags">
             {ev.tags.map((t) => <span key={t} className="tag">{t}</span>)}
           </div>
+          {ev.ficha && (
+            <div className="sheet-ficha">
+              <p className="sheet-label mono">Ficha técnica</p>
+              <dl className="ficha-grid">
+                {[
+                  ["País de origen", ev.ficha.pais],
+                  ["Creador/a", ev.ficha.creador],
+                  ["Temporadas", ev.ficha.temporadas],
+                  ["Eps. por temporada", ev.ficha.epsPorTemporada],
+                  ["Duración aprox.", ev.ficha.duracion],
+                  ["Plataforma", ev.ficha.plataforma],
+                ].map(([label, val]) => (
+                  <div key={label} className="ficha-row">
+                    <dt>{label}</dt>
+                    <dd>{val}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          )}
         </div>
         {rel.length > 0 && (
           <div className="sheet-related">
@@ -59,7 +79,7 @@ function Reader({ ev, onClose, onProgress }) {
   useEffect(() => {
     if (!ev) return;
     setContent(null);
-    fetch(`content/${ev.id}.md`)
+    fetch(`content/${ev.slug || ev.id}.md`)
       .then(r => r.text())
       .then(text => setContent(marked.parse(text)))
       .catch(() => setContent('<p>No se encontró el contenido de esta evidencia.</p>'));
@@ -103,7 +123,6 @@ function Reader({ ev, onClose, onProgress }) {
           </div>
 
           <article className="reader-doc">
-            <p className="lead">{ev.tagline}</p>
             {content
               ? <div dangerouslySetInnerHTML={{ __html: content }} />
               : <div style={{ color: "var(--muted)", padding: "48px 0", textAlign: "center", fontFamily: "var(--font-mono)", fontSize: 13, letterSpacing: ".08em" }}>CARGANDO…</div>

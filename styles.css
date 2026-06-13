@@ -291,8 +291,15 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .sheet-metarow .pct { color: var(--phosphor); }
 .sheet-actions { display: flex; gap: 12px; margin-bottom: 26px; }
 .sheet-label { font-size: 18px; font-weight: 600; color: var(--text); letter-spacing: -.01em; margin: 0 0 10px; }
-.sheet-syn { font-size: 16px; color: var(--text-2); line-height: 1.6; max-width: 660px; margin-bottom: 26px; }
+.sheet-syn { font-size: 16px; color: var(--text-2); line-height: 1.6; margin-bottom: 26px; }
 .sheet-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+
+.sheet-ficha { margin-top: 24px; }
+.sheet-ficha > .sheet-label { font-size: 13px; letter-spacing: .06em; color: var(--muted); margin-bottom: 12px; }
+.ficha-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; margin: 0; padding: 18px 20px; background: var(--surface-2); border-radius: 10px; border: 1px solid var(--line); }
+.ficha-row { display: flex; flex-direction: column; gap: 4px; }
+.ficha-row dt { font-family: var(--font-mono); font-size: 10px; letter-spacing: .09em; color: var(--muted); font-weight: 700; text-transform: uppercase; }
+.ficha-row dd { font-size: 13.5px; color: var(--text); margin: 0; line-height: 1.4; }
 .tag { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .08em; padding: 5px 10px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); color: var(--text-2); }
 .sheet-related { padding: 24px 40px 26px; border-top: 1px solid var(--line); }
 .sheet-related h3 { font-size: 15px; margin-bottom: 16px; color: var(--text-2); }
@@ -337,8 +344,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .reader-progress { position: fixed; top: 0; left: 0; height: 3px; background: var(--phosphor); box-shadow: 0 0 10px var(--phosphor); z-index: 95; transition: width .1s linear; }
 .reader-doc { margin-top: 6px; }
 .reader-doc .lead { font-size: 19px; line-height: 1.6; color: var(--text); margin-bottom: 28px; }
-.reader-doc h2 { font-size: 22px; margin: 36px 0 14px; }
-.reader-doc p { font-size: 16.5px; line-height: 1.75; color: var(--text-2); margin: 0 0 18px; }
+.reader-doc h2 { font-size: 16px; font-weight: 600; color: var(--text-2); margin: 36px 0 10px; }
+.reader-doc p { font-size: 16.5px; line-height: 1.75; color: var(--text-2); margin: 0 0 18px; text-align: justify; }
 .reader-note {
   display: flex; gap: 12px; align-items: flex-start; margin: 8px 0 30px; padding: 14px 16px;
   background: rgba(243,117,33,.06); border: 1px solid rgba(243,117,33,.25); border-radius: 10px;
